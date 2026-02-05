@@ -504,7 +504,7 @@ lemma pairwise_coprime_prime_squares (S : Finset Nat.Primes) :
       apply Subtype.ext
       simpa using h
     exact h₁
-  
+
   have h_coprime : (p : ℕ).Coprime (q : ℕ) := by
     have h₁ : Nat.Prime (p : ℕ) := p.prop
     have h₂ : Nat.Prime (q : ℕ) := q.prop
@@ -516,7 +516,7 @@ lemma pairwise_coprime_prime_squares (S : Finset Nat.Primes) :
       apply h₃
       simpa using h₅
     exact h₄
-  
+
   have h_pow_left : ((p : ℕ) ^ 2).Coprime (q : ℕ) := by
     have h₂ : (p : ℕ).Coprime (q : ℕ) := h_coprime
     -- Use the fact that if a and b are coprime, then a^2 and b are coprime.
@@ -525,7 +525,7 @@ lemma pairwise_coprime_prime_squares (S : Finset Nat.Primes) :
       simpa [Nat.coprime_iff_gcd_eq_one, Nat.gcd_comm] using
         Nat.Coprime.pow_left 2 h₂
     exact h₃
-  
+
   have h_pow_right : ((p : ℕ) ^ 2).Coprime ((q : ℕ) ^ 2) := by
     have h₂ : ((p : ℕ) ^ 2).Coprime (q : ℕ) := h_pow_left
     -- Use the fact that if a and b are coprime, then a and b^2 are coprime.
@@ -534,7 +534,7 @@ lemma pairwise_coprime_prime_squares (S : Finset Nat.Primes) :
       simpa [Nat.coprime_iff_gcd_eq_one, Nat.gcd_comm] using
         Nat.Coprime.pow_right 2 h₂
     exact h₃
-  
+
   exact h_pow_right
 
 lemma crtMap_mem_range (S : Finset Nat.Primes) (r : ℕ) (p : Nat.Primes) (hp : p ∈ S) :
@@ -1052,7 +1052,7 @@ lemma dvd_iff_of_mod_eq_primeSquareProduct (S : Finset Nat.Primes) (p : Nat.Prim
       exact h₅
     -- Convert the product to the definition of primeSquareProduct
     simpa [primeSquareProduct] using h₂
-  
+
   -- Use the given congruence and the fact that p² divides the modulus to get the desired equivalence
   have h₂ : N₁ % primeSquareProduct S = N₂ % primeSquareProduct S := hmod
   have h₃ : N₁ ≡ N₂ [MOD primeSquareProduct S] := by
@@ -1084,24 +1084,24 @@ lemma shifted_dvd_iff_of_mod_eq_primeSquareProduct (b d : ℕ) (S : Finset Nat.P
     rw [primeSquareProduct]
     apply Finset.dvd_prod_of_mem
     <;> simp_all [hp]
-  
+
   have h₂ : N₁ ≡ N₂ [MOD primeSquareProduct S] := by
     rw [Nat.ModEq]
     exact hmod
-  
+
   have h₃ : N₁ ≡ N₂ [MOD (p : ℕ) ^ 2] := by
     have h₃ : N₁ ≡ N₂ [MOD primeSquareProduct S] := h₂
     have h₄ : (p : ℕ) ^ 2 ∣ primeSquareProduct S := h₁
     exact h₃.of_dvd h₄
-  
+
   have h₄ : b * N₁ ≡ b * N₂ [MOD (p : ℕ) ^ 2] := by
     have h₄ : N₁ ≡ N₂ [MOD (p : ℕ) ^ 2] := h₃
     exact h₄.mul_left b
-  
+
   have h₅ : b * N₁ + d ≡ b * N₂ + d [MOD (p : ℕ) ^ 2] := by
     have h₅ : b * N₁ ≡ b * N₂ [MOD (p : ℕ) ^ 2] := h₄
     exact h₅.add_right d
-  
+
   have h₆ : ((p : ℕ) ^ 2 ∣ b * N₁ + d ↔ (p : ℕ) ^ 2 ∣ b * N₂ + d) := by
     have h₆ : b * N₁ + d ≡ b * N₂ + d [MOD (p : ℕ) ^ 2] := h₅
     have h₇ : (p : ℕ) ^ 2 ∣ (p : ℕ) ^ 2 := by
@@ -1109,7 +1109,7 @@ lemma shifted_dvd_iff_of_mod_eq_primeSquareProduct (b d : ℕ) (S : Finset Nat.P
     have h₈ : ((p : ℕ) ^ 2 ∣ b * N₁ + d ↔ (p : ℕ) ^ 2 ∣ b * N₂ + d) := by
       apply Nat.ModEq.dvd_iff h₆ h₇
     exact h₈
-  
+
   exact h₆
 
 theorem condition_mod_invariant (b : ℕ) (T : Finset ℕ) (S : Finset Nat.Primes)
@@ -1645,7 +1645,7 @@ lemma biUnion_completeBlocks_disjoint_partialBlock (M X : ℕ) (hM : 0 < M) :
       exact h₈
     -- Derive the contradiction
     exact h₂ hx₂
-  
+
   exact h_main
 
 lemma mem_completeBlock_of_div_lt (M X n : ℕ) (hM : 0 < M) (hn_pos : 1 ≤ n) (hn_le : n ≤ X)
@@ -1656,7 +1656,7 @@ lemma mem_completeBlock_of_div_lt (M X n : ℕ) (hM : 0 < M) (hn_pos : 1 ≤ n) 
       have h₄ := Nat.div_add_mod (n - 1) M
       linarith
     linarith
-  
+
   have h₂ : (n - 1) / M * M + 1 ≤ n := by
     have h₃ : n - 1 ≥ (n - 1) / M * M := by
       have h₄ : (n - 1) / M * M ≤ n - 1 := by
@@ -1678,7 +1678,7 @@ lemma mem_completeBlock_of_div_lt (M X n : ℕ) (hM : 0 < M) (hn_pos : 1 ≤ n) 
             <;> ring_nf at h₃ ⊢ <;> omega
       exact h₆
     exact h₄
-  
+
   have h₃ : n ≤ ((n - 1) / M + 1) * M := by
     have h₄ : n ≤ ((n - 1) / M + 1) * M := by
       by_cases h₅ : M = 0
@@ -1698,12 +1698,12 @@ lemma mem_completeBlock_of_div_lt (M X n : ℕ) (hM : 0 < M) (hn_pos : 1 ≤ n) 
           exact h₁₀
         exact h₈
     exact h₄
-  
+
   have h₄ : n ∈ Finset.Icc ((n - 1) / M * M + 1) (((n - 1) / M + 1) * M) := by
     rw [Finset.mem_Icc]
     constructor <;>
     (try omega)
-  
+
   simp only [completeBlock] at *
   simpa [Nat.add_assoc, Nat.add_comm, Nat.add_left_comm, Nat.mul_add, Nat.add_mul] using h₄
 
@@ -1730,15 +1730,15 @@ lemma mem_partialBlock_of_div_eq (M X n : ℕ) (hM : 0 < M) (hn_pos : 1 ≤ n) (
         omega
       exact h₈
     exact h₅
-  
+
   have h₂ : n ≤ X := hn_le
-  
+
   have h₃ : n ∈ Finset.Icc (X / M * M + 1) X := by
     apply Finset.mem_Icc.mpr
     constructor
     · exact h₁
     · exact h₂
-  
+
   have h₄ : partialBlock M X = Finset.Icc (X / M * M + 1) X := rfl
   rw [h₄] at *
   exact h₃
@@ -1803,10 +1803,10 @@ lemma filtered_biUnion_disjoint_filtered_partialBlock (M X : ℕ) (hM : 0 < M)
     have h₉ : x ≤ (X / M) * M := by
       nlinarith
     omega
-  
+
   have h_main : Disjoint (((Finset.range (X / M)).biUnion (completeBlock M)).filter P) ((partialBlock M X).filter P) := by
     apply Finset.disjoint_filter_filter h_disjoint_unfiltered
-  
+
   exact h_main
 
 /-- Filtering preserves pairwise disjointness of Finsets: if the original Finsets are
@@ -2070,10 +2070,10 @@ lemma error_bound_empty_case (b : ℕ) (hb : 2 ≤ b) (T : Finset ℕ) (hT : T �
       exact h₁ p
     -- Since the product is positive, it is greater than 0
     simpa [primeSquareProduct] using h₂
-  
+
   have h_false : False := by
     linarith
-  
+
   exfalso
   exact h_false
 
@@ -2449,7 +2449,7 @@ lemma exists_finset_tsum_compl_lt (f : Nat.Primes → ℝ) (hf : ∀ p, 0 ≤ f 
         simpa using h₇
       exact h₅
     exact h₄
-  
+
   have h₂ : ∃ (s : Finset Nat.Primes), ∑' (p : {q : Nat.Primes // q ∉ s}), f p < ε := by
     have h₅ : ∃ (s : Finset Nat.Primes), ∑' (p : {q : Nat.Primes // q ∉ s}), f p < ε := by
       -- Use the fact that the limit of the tail sums is 0 to find the required finite set s
@@ -3079,7 +3079,7 @@ lemma relevantNotInS_gt_b (b X : ℕ) (S : Finset Nat.Primes) (y : ℕ)
     simp only [relevantNotInS, Finset.mem_filter, Finset.mem_range] at hq
     have h₁ : q ∉ S := by aesop
     exact h₁
-  
+
   have h_main : (q : ℕ) > b := by
     by_cases hqy : (q : ℕ) ≤ y
     · -- Case: (q : ℕ) ≤ y
@@ -3088,7 +3088,7 @@ lemma relevantNotInS_gt_b (b X : ℕ) (S : Finset Nat.Primes) (y : ℕ)
     · -- Case: (q : ℕ) > y
       have h₂ : (q : ℕ) > b := by omega
       exact h₂
-  
+
   exact h_main
 
 lemma prime_sq_bound_from_N_dvd (b X N : ℕ) (hb : 2 ≤ b) (q : Nat.Primes)
@@ -3237,7 +3237,7 @@ lemma sum_expand (c : ℝ) (X : ℕ) (Q : Finset Nat.Primes) :
       _ = (∑ q ∈ Q, (c * ((X : ℝ) / ((q : ℕ) : ℝ)^2)) + ∑ _ ∈ Q, c) := by
         -- Split the sum into two separate sums
         rw [Finset.sum_add_distrib]
-  
+
   have h₂ : (∑ q ∈ Q, (c * ((X : ℝ) / ((q : ℕ) : ℝ)^2))) = c * X * (∑ q ∈ Q, 1 / (((q : ℕ) : ℝ)^2)) := by
     calc
       (∑ q ∈ Q, (c * ((X : ℝ) / ((q : ℕ) : ℝ)^2))) = c * (∑ q ∈ Q, ((X : ℝ) / ((q : ℕ) : ℝ)^2)) := by
@@ -3259,13 +3259,13 @@ lemma sum_expand (c : ℝ) (X : ℕ) (Q : Finset Nat.Primes) :
       _ = c * X * (∑ q ∈ Q, 1 / (((q : ℕ) : ℝ)^2)) := by
         -- Rearrange the multiplication for clarity
         ring_nf
-  
+
   have h₃ : (∑ _ ∈ Q, c : ℝ) = c * Q.card := by
     calc
       (∑ _ ∈ Q, c : ℝ) = (Q.card : ℝ) * c := by
         simp [Finset.sum_const]
       _ = c * Q.card := by ring
-  
+
   have h₄ : (∑ q ∈ Q, (c * ((X : ℝ) / ((q : ℕ) : ℝ)^2 + 1))) = c * X * (∑ q ∈ Q, 1 / (((q : ℕ) : ℝ)^2)) + c * Q.card := by
     calc
       (∑ q ∈ Q, (c * ((X : ℝ) / ((q : ℕ) : ℝ)^2 + 1))) = (∑ q ∈ Q, (c * ((X : ℝ) / ((q : ℕ) : ℝ)^2)) + ∑ _ ∈ Q, c) := by rw [h₁]
@@ -3273,7 +3273,7 @@ lemma sum_expand (c : ℝ) (X : ℕ) (Q : Finset Nat.Primes) :
         rw [h₂]
       _ = (c * X * (∑ q ∈ Q, 1 / (((q : ℕ) : ℝ)^2)) + c * Q.card) := by
         rw [h₃]
-  
+
   rw [h₄]
 
 lemma sum_bound_real (T : Finset ℕ) (y : ℕ) (X : ℕ)
@@ -3296,12 +3296,12 @@ lemma nat_div_floor_le_real_div (X : ℕ) (q : Nat.Primes) :
       exact h₃
     -- Cast the inequality to real numbers
     norm_cast at h₂ ⊢
-  
+
   have h₂ : 0 < ((q : ℕ) : ℝ) := by
     -- Prove that q as a real number is positive
     norm_cast
     exact Nat.Prime.pos q.property
-  
+
   have h₄ : ((X / (q : ℕ)^2 : ℕ) : ℝ) ≤ (X : ℝ) / ((q : ℕ)^2 : ℝ) := by
     -- Divide both sides of h₁ by ((q : ℕ)^2 : ℝ)
     have h₆ : 0 < ((q : ℕ)^2 : ℝ) := by positivity
@@ -3312,7 +3312,7 @@ lemma nat_div_floor_le_real_div (X : ℕ) (q : Nat.Primes) :
       _ ≤ (X : ℝ) / ((q : ℕ)^2 : ℝ) := by
         -- Use the fact that ((X / (q : ℕ)^2 : ℕ) : ℝ) * ((q : ℕ) ^ 2 : ℝ) ≤ (X : ℝ)
         gcongr
-  
+
   exact h₄
 
 lemma nat_sum_le_real_sum (T : Finset ℕ) (X : ℕ) (Q : Finset Nat.Primes) :
@@ -3373,7 +3373,7 @@ lemma sqrt_bXb_div_X_small (b : ℕ) (hb : 2 ≤ b) (ε : ℝ) (hε : 0 < ε) :
     refine' ⟨X₀, _⟩
     -- Cast X₀ to ℝ and verify the inequality
     norm_cast at hX₀ ⊢
-  
+
   -- Step 2: Obtain X₀ from the Archimedean property
   obtain ⟨X₀, hX₀⟩ := h₃
   use max 1 X₀
@@ -3382,15 +3382,15 @@ lemma sqrt_bXb_div_X_small (b : ℕ) (hb : 2 ≤ b) (ε : ℝ) (hε : 0 < ε) :
     -- Prove that X ≥ 1
     have h₅ : max 1 X₀ ≥ 1 := by simp [le_max_left]
     linarith
-  
+
   have h₅ : (X : ℝ) ≥ 1 := by exact_mod_cast h₄
-  
+
   have h₆ : (X : ℝ) ≥ (X₀ : ℝ) := by
     -- Prove that X ≥ X₀
     have h₇ : (max 1 X₀ : ℕ) ≥ X₀ := by simp [le_max_right]
     have h₉ : (X : ℕ) ≥ X₀ := by linarith
     exact_mod_cast h₉
-  
+
   have h₈ : (ε : ℝ) ^ 2 * (X : ℝ) > 2 * (b : ℝ) := by
     -- Prove that ε² * X > 2 * b
     have h₁₀ : 0 < (ε : ℝ) ^ 2 := by positivity
@@ -3403,7 +3403,7 @@ lemma sqrt_bXb_div_X_small (b : ℕ) (hb : 2 ≤ b) (ε : ℝ) (hε : 0 < ε) :
       field_simp [h₁₁.ne']
     -- Combine the inequalities
     linarith
-  
+
   have h₉ : (b : ℝ) * X + b ≤ 2 * (b : ℝ) * X := by
     -- Prove that b * X + b ≤ 2 * b * X
     have h₁₂ : (b : ℝ) * (X : ℝ) ≥ (b : ℝ) := by
@@ -3412,14 +3412,14 @@ lemma sqrt_bXb_div_X_small (b : ℕ) (hb : 2 ≤ b) (ε : ℝ) (hε : 0 < ε) :
       nlinarith
     -- Cast back to natural numbers if necessary
     norm_cast at h₁₃ ⊢
-  
+
   have h₁₀ : (b : ℝ) * X + b < (ε : ℝ) ^ 2 * (X : ℝ) ^ 2 := by
     -- Prove that b * X + b < ε² * X²
     have h₁₆ : (ε : ℝ) ^ 2 * (X : ℝ) ^ 2 > 2 * (b : ℝ) * (X : ℝ) := by
       nlinarith [sq_nonneg ((X : ℝ) - 1)]
     -- Combine the inequalities to get the final result
     nlinarith
-  
+
   have h₁₁ : (Nat.sqrt (b * X + b) : ℝ) < (ε : ℝ) * X := by
     -- Prove that √(b * X + b) < ε * X
     have h₁₄ : (Nat.sqrt (b * X + b) : ℕ) * (Nat.sqrt (b * X + b) : ℕ) ≤ (b * X + b) := by
@@ -3444,7 +3444,7 @@ lemma sqrt_bXb_div_X_small (b : ℕ) (hb : 2 ≤ b) (ε : ℝ) (hε : 0 < ε) :
     have h₁₉ : (Nat.sqrt (b * X + b) : ℝ) < (ε : ℝ) * X := by
       norm_cast at h₁₈ ⊢
     exact h₁₉
-  
+
   have h₁₂ : (Nat.sqrt (b * X + b) : ℝ) / X < ε := by
     -- Prove that √(b * X + b) / X < ε
     have h₁₃ : 0 < (X : ℝ) := by
@@ -3455,7 +3455,7 @@ lemma sqrt_bXb_div_X_small (b : ℕ) (hb : 2 ≤ b) (ε : ℝ) (hε : 0 < ε) :
         _ = (ε : ℝ) := by
           field_simp [h₁₃.ne']
     exact h₁₅
-  
+
   exact h₁₂
 
 lemma combine_violation_bounds (b : ℕ) (hb : 2 ≤ b) (T : Finset ℕ) (hT : T ⊆ Finset.range b)
