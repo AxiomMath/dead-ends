@@ -6,6 +6,11 @@ These files accompany the paper [arXiv:2602.05095](https://arxiv.org/abs/2602.05
 
 The formal proofs provided in this work were developed and verified using **Lean 4.26.0**. Compatibility with earlier or later versions is not guaranteed due to the evolving nature of the Lean 4 compiler and its core libraries.
 
+## Update
+
+After we posted the first version on arXiv, we learned from K. Soundararajan
+that the result in this paper was previously obtained by Mirsky in 1947.
+
 ## Input files
 
 - `dead-ends.tex`: natural language description of the problem
