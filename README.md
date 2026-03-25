@@ -13,15 +13,15 @@ that the result in this paper was previously obtained by Mirsky in 1947.
 
 ## Input files
 
-- `dead-ends.tex`: natural language description of the problem
-- `task.md`: description of the task to be completed (deferring to `dead-ends.tex`)
-- `.environment`: specifies the Lean version
+- [`dead-ends.tex`](dead-ends.tex): natural language description of the problem
+- [`task.md`](task.md): description of the task to be completed (deferring to [`dead-ends.tex`](dead-ends.tex))
+- [`.environment`](.environment): specifies the Lean version
 
 ## Output files (Run with Lean 4.26.0)
 
-- `Deadends/problem.lean`: translation of the problem statement into formal language (Lean),
+- [`Deadends/problem.lean`](Deadends/problem.lean): translation of the problem statement into formal language (Lean),
   including the answer itself (computed by AxiomProver)
-- `Deadends/solution.lean`: solution in formal language (Lean)
+- [`Deadends/solution.lean`](Deadends/solution.lean): solution in formal language (Lean)
 
 ## License
 
